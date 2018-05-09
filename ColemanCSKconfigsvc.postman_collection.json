@@ -1,0 +1,65 @@
+{
+	"id": "8d2cdef6-2e07-4792-b005-828a9206889e",
+	"name": "ColemanCSKconfigsvc",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [
+		"5b6a0a2e-e0fe-45b4-9c5c-38fdb5337241"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "5b6a0a2e-e0fe-45b4-9c5c-38fdb5337241",
+			"name": "/cskconfigsvc/info",
+			"url": "https://mingle-ci01-alb.mingle.awsdev.infor.com/cskconfigsvc/info",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b9269b3b-52af-4717-8fb4-aed69d2315c0",
+						"type": "text/javascript",
+						"exec": [
+							"try",
+							"\t{",
+							"\t    tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"\t\tvar data = JSON.parse(responseBody);",
+							"\t\ttests[\"Body contains versionNumber\"] = responseBody.has(\"versionNumber\");",
+							"",
+							"\t\ttests[\"Body contains buildNumber\"] = responseBody.has(\"buildNumber\");",
+							"",
+							"\t\ttests[\"Body contains applicationName\"] = responseBody.has(\"applicationName\");",
+							"\t",
+							"\t\t",
+							"\t\ttests[\"Body contains buildDate\"] = responseBody.has(\"buildDate\");",
+							"\t",
+							"\t ",
+							"\t}",
+							"catch(e)",
+							"\t{",
+							"\t\tconsole.log(e);",
+							"\t}",
+							"\t",
+							"\t",
+							"\t",
+							""
+						]
+					}
+				}
+			],
+			"folder": null,
+			"headers": "",
+			"pathVariables": {}
+		}
+	]
+}
